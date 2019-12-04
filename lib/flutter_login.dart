@@ -148,6 +148,7 @@ class _Header extends StatelessWidget {
 class FlutterLogin extends StatefulWidget {
   FlutterLogin({
     Key key,
+    @required this.backgroundWidget,
     @required this.onSignup,
     @required this.onLogin,
     @required this.onRecoverPassword,
@@ -163,6 +164,8 @@ class FlutterLogin extends StatefulWidget {
     this.showDebugButtons = false,
   }) : super(key: key);
 
+  final Widget backgroundWidget;
+  
   /// Called when the user hit the submit button when in sign up mode
   final AuthCallback onSignup;
 
@@ -514,10 +517,13 @@ class _FlutterLoginState extends State<FlutterLogin>
         // resizeToAvoidBottomInset: false,
         body: Stack(
           children: <Widget>[
-            GradientBox(
-              colors: [theme.primaryColor, theme.primaryColorDark],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+//             GradientBox(
+//               colors: [theme.primaryColor, theme.primaryColorDark],
+//               begin: Alignment.topLeft,
+//               end: Alignment.bottomRight,
+//             ),
+            Positioned.fill(
+              child: widget.backgroundWidget,
             ),
             SingleChildScrollView(
               child: Theme(
